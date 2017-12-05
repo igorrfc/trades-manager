@@ -8,7 +8,7 @@ import { logger } from 'redux-logger'
 
 import reducers from './reducers'
 
-import { TradesBoard } from './containers'
+import { App } from './containers'
 import registerServiceWorker from './registerServiceWorker'
 
 require('dotenv').config()
@@ -36,7 +36,7 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store} >
-    <TradesBoard />
+    <App />
   </Provider>,
   document.getElementById('root')
 );

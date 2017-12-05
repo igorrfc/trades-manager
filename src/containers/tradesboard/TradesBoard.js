@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 
-const TradesBoard = () => (
-  <h1>Sim</h1>
-);
+class TradesBoard extends Component {
+  render() {
+    return (
+      <div>
+        Trades table
+      </div>
+    )
+  }
+}
 
 export default TradesBoard;
