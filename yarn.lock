@@ -2,15 +2,9 @@
 # yarn lockfile v1
 
 
-"@types/events@*":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@types/events/-/events-1.1.0.tgz#93b1be91f63c184450385272c47b6496fd028e02"
-
 "@types/node@*":
-  version "8.0.54"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.54.tgz#3fd9357db4af388b79e03845340259440edffde6"
-  dependencies:
-    "@types/events" "*"
+  version "8.0.55"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.55.tgz#015966c0af809216b8a46cc527b5c211994d36f0"
 
 abab@^1.0.3:
   version "1.0.4"
@@ -2016,8 +2010,8 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.27:
-  version "1.3.27"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.27.tgz#78ecb8a399066187bb374eede35d9c70565a803d"
+  version "1.3.28"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.28.tgz#8dd4e6458086644e9f9f0a1cf32e2a1f9dffd9ee"
 
 elliptic@^6.0.0:
   version "6.4.0"
@@ -5511,7 +5505,7 @@ react-redux@^5.0.6:
     loose-envify "^1.1.0"
     prop-types "^15.5.10"
 
-react-scripts@2.0:
+react-scripts@^1.0.17:
   version "1.0.17"
   resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-1.0.17.tgz#c30029123b561a060227af4d7797d50a222d3fbf"
   dependencies:
