@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
+
+import TradeTable from '../../components/trade/TradeTable'
 
 class TradesBoard extends Component {
   render() {
     return (
       <div>
-        Trades table
+        <TradeTable />
       </div>
     )
   }
