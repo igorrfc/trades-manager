@@ -6,6 +6,9 @@ import axios from 'axios'
 import axiosMiddleware from 'redux-axios-middleware'
 import { logger } from 'redux-logger'
 
+import 'react-datepicker/dist/react-datepicker.css';
+import 'react-select/dist/react-select.css';
+
 import reducers from './reducers'
 
 import { App } from './containers'
