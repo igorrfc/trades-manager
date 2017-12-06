@@ -8,16 +8,29 @@ import TradeRow from '../TradeRow'
 describe('TradeTable', () => {
   it('renders without crashing', () => {
     const rootDiv = document.createElement('div')
-    ReactDOM.render(<TradeTable trades={[]} changeTradeAttribute={jest.fn()} />, rootDiv)
+    ReactDOM.render(
+      <TradeTable
+        trades={[]}
+        changeTradeAttribute={jest.fn()}
+        removeTrade={jest.fn()}
+      />,
+      rootDiv
+    )
   })
 
   describe('table headers', () => {
     let wrapper, headers
 
     beforeEach(() => {
-      wrapper = shallow(<TradeTable trades={[]} changeTradeAttribute={jest.fn()} />)
-      headers = wrapper.find('th').map((el) => el.text())
-    });
+      wrapper = shallow(
+        <TradeTable
+          trades={[]}
+          changeTradeAttribute={jest.fn()}
+          removeTrade={jest.fn()}
+        />
+      )
+      headers = wrapper.find('th').map(el => el.text())
+    })
 
     it('must have a Data header', () => {
       expect(headers.filter(h => h === 'Data').length).toBe(1)
@@ -54,9 +67,15 @@ describe('TradeTable', () => {
           shares: '130.0'
         }
       ]
-      const wrapper = shallow(<TradeTable trades={trades} changeTradeAttribute={jest.fn()} />)
+      const wrapper = shallow(
+        <TradeTable
+          trades={trades}
+          changeTradeAttribute={jest.fn()}
+          removeTrade={jest.fn()}
+        />
+      )
 
       expect(wrapper.find(TradeRow).length).toBe(2)
-    });
-  });
+    })
+  })
 })

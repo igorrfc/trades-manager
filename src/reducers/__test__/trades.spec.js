@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from 'moment'
 
 import trades from '../trades'
 import { actionTypes } from '../../constants'
@@ -16,7 +16,7 @@ describe('trades reducer', () => {
         type: actionTypes.CHANGE_TRADE_ATTRIBUTE,
         key: 1,
         field: 'date',
-        value: '2016-01-22',
+        value: '2016-01-22'
       }
 
       initialState.draftList = [
@@ -32,20 +32,44 @@ describe('trades reducer', () => {
           { date: '2016-01-22', id: '41', kind: 1 },
           { date: '2016-01-25', id: '42', kind: 0 }
         ],
-        draftEnabled: true,
+        draftEnabled: true
       })
-    });
-  });
+    })
+  })
 
   describe('NEW_TRADE', () => {
     it('inserts a new empty trade on the draftList', () => {
       const action = {
-        type: actionTypes.NEW_TRADE,
+        type: actionTypes.NEW_TRADE
       }
 
       expect(trades(initialState, action).draftList).toEqual([
-        { date: moment().format('YYYY-MM-DD'), kind: 0, shares: '0.0' },
+        { date: moment().format('YYYY-MM-DD'), kind: 0, shares: '0.0' }
       ])
-    });
+    })
   })
-});
+
+  describe('REMOVE_TRADE', () => {
+    it('removes the trade matching the received key', () => {
+      const action = {
+        type: actionTypes.REMOVE_TRADE,
+        key: 1
+      }
+
+      initialState.draftList = [
+        { date: '2016-01-25', id: '40', kind: 0 },
+        { date: '2016-01-25', id: '41', kind: 1 },
+        { date: '2016-01-25', id: '42', kind: 0 }
+      ]
+
+      expect(trades(initialState, action)).toEqual({
+        list: [],
+        draftList: [
+          { date: '2016-01-25', id: '40', kind: 0 },
+          { date: '2016-01-25', id: '42', kind: 0 }
+        ],
+        draftEnabled: false
+      })
+    })
+  })
+})

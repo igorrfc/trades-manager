@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -12,7 +12,7 @@ export class TradesBoard extends Component {
   }
 
   render() {
-    const { trades, changeTradeAttribute, newTrade } = this.props
+    const { trades, changeTradeAttribute, newTrade, removeTrade } = this.props
     let list = trades.list
 
     if (trades.draftEnabled) {
@@ -21,17 +21,22 @@ export class TradesBoard extends Component {
 
     return (
       <div>
-        <TradeTable trades={list} changeTradeAttribute={changeTradeAttribute} />
+        <TradeTable
+          trades={list}
+          changeTradeAttribute={changeTradeAttribute}
+          removeTrade={removeTrade}
+        />
         <a onClick={newTrade}>Inserir nova transação</a>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => state
-const mapDispatchToProps = (dispatch) => ({
+const mapStateToProps = state => state
+const mapDispatchToProps = dispatch => ({
   ...bindActionCreators(tradeActions, dispatch),
   changeTradeAttribute: tradeActions.changeTradeAttribute(dispatch),
+  removeTrade: tradeActions.removeTrade(dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TradesBoard)
