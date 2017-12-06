@@ -21,3 +21,5 @@ export const changeTradeAttribute = (dispatch) => (key) => (attribute, value) =>
     value
   })
 )
+
+export const newTrade = () => ({ type: actionTypes.NEW_TRADE })

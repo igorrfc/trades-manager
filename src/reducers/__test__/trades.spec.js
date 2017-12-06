@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 import trades from '../trades'
 import { actionTypes } from '../../constants'
 
@@ -34,4 +36,16 @@ describe('trades reducer', () => {
       })
     });
   });
+
+  describe('NEW_TRADE', () => {
+    it('inserts a new empty trade on the draftList', () => {
+      const action = {
+        type: actionTypes.NEW_TRADE,
+      }
+
+      expect(trades(initialState, action).draftList).toEqual([
+        { date: moment().format('YYYY-MM-DD'), kind: 0, shares: '0.0' },
+      ])
+    });
+  })
 });

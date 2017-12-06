@@ -12,7 +12,7 @@ export class TradesBoard extends Component {
   }
 
   render() {
-    const { trades, changeTradeAttribute } = this.props
+    const { trades, changeTradeAttribute, newTrade } = this.props
     let list = trades.list
 
     if (trades.draftEnabled) {
@@ -22,6 +22,7 @@ export class TradesBoard extends Component {
     return (
       <div>
         <TradeTable trades={list} changeTradeAttribute={changeTradeAttribute} />
+        <a onClick={newTrade}>Inserir nova transação</a>
       </div>
     )
   }
