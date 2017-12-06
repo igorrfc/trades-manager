@@ -13,7 +13,13 @@ export class TradesBoard extends Component {
   }
 
   render() {
-    const { trades, changeTradeAttribute, newTrade, removeTrade } = this.props
+    const {
+      trades,
+      changeTradeAttribute,
+      newTrade,
+      removeTrade,
+      cancelTransaction
+    } = this.props
     let list = trades.list
 
     if (trades.draftEnabled) {
@@ -30,6 +36,13 @@ export class TradesBoard extends Component {
               removeTrade={removeTrade}
             />
             <a onClick={newTrade}>Inserir nova transação</a>
+            <button
+              name="cancelTransaction"
+              onClick={cancelTransaction}
+              type="button"
+            >
+              Cancelar
+            </button>
           </Col>
         </Row>
       </Container>

@@ -67,6 +67,12 @@ export default function(state = initialState, action) {
           state.list
         )
       }
+    case actionTypes.CANCEL_TRANSACTION:
+      return {
+        ...state,
+        draftList: cloneCollection(state.list),
+        draftEnabled: false
+      }
     default:
       return state
   }

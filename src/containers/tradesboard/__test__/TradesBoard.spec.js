@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { shallow } from 'enzyme'
 
-import { TradesBoard } from '../TradesBoard';
+import { TradesBoard } from '../TradesBoard'
 
 describe('TradesBoard', () => {
   let rootDiv
@@ -14,11 +14,13 @@ describe('TradesBoard', () => {
   it('renders without crashing', () => {
     ReactDOM.render(
       <TradesBoard
-        trades={{list: []}}
+        trades={{ list: [] }}
         fetchTradesList={jest.fn()}
         changeTradeAttribute={jest.fn()}
         newTrade={jest.fn()}
-      />, rootDiv)
+      />,
+      rootDiv
+    )
   })
 
   describe('.componentWillMount', () => {
@@ -26,11 +28,13 @@ describe('TradesBoard', () => {
       const fetchTradesList = jest.fn()
       ReactDOM.render(
         <TradesBoard
-          trades={{list: []}}
+          trades={{ list: [] }}
           fetchTradesList={fetchTradesList}
           changeTradeAttribute={jest.fn()}
           newTrade={jest.fn()}
-        />, rootDiv)
+        />,
+        rootDiv
+      )
       expect(fetchTradesList).toHaveBeenCalled()
     })
   })
@@ -40,7 +44,7 @@ describe('TradesBoard', () => {
       const newTrade = jest.fn()
       const wrapper = shallow(
         <TradesBoard
-          trades={{list: []}}
+          trades={{ list: [] }}
           fetchTradesList={jest.fn()}
           changeTradeAttribute={jest.fn()}
           newTrade={newTrade}
@@ -50,6 +54,27 @@ describe('TradesBoard', () => {
       wrapper.find('a').simulate('click')
 
       expect(newTrade).toHaveBeenCalled()
-    });
+    })
+  })
+
+  describe('when the cancelTransaction button is clicked', () => {
+    it('calls the cancelTransaction action creator received as prop', () => {
+      const cancelTransaction = jest.fn()
+      const wrapper = shallow(
+        <TradesBoard
+          trades={{ list: [] }}
+          fetchTradesList={jest.fn()}
+          changeTradeAttribute={jest.fn()}
+          newTrade={jest.fn()}
+          cancelTransaction={cancelTransaction}
+        />
+      )
+
+      wrapper
+        .findWhere(el => el.prop('name') === 'cancelTransaction')
+        .simulate('click')
+
+      expect(cancelTransaction).toHaveBeenCalled()
+    })
   })
 })

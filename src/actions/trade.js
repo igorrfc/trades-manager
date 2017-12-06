@@ -47,3 +47,7 @@ export const removeTrade = dispatch => key => id => {
     key: key
   })
 }
+
+export const cancelTransaction = () => ({
+  type: actionTypes.CANCEL_TRANSACTION
+})

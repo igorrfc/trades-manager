@@ -86,4 +86,27 @@ describe('trades reducer', () => {
       })
     })
   })
+
+  describe('CANCEL_TRANSACTION', () => {
+    it('rollbacks the draftList to the list value', () => {
+      const action = { type: actionTypes.CANCEL_TRANSACTION }
+
+      initialState.list = [
+        { date: '2016-01-25', id: '40', kind: 0 },
+        { date: '2016-01-25', id: '42', kind: 0 }
+      ]
+
+      initialState.draftList = [
+        { date: '2016-01-25', id: '40', kind: 0 },
+        { date: '2016-01-25', id: '42', kind: 0 },
+        { date: '2016-01-25', id: '43', kind: 1 }
+      ]
+
+      expect(trades(initialState, action)).toEqual({
+        list: initialState.list,
+        draftList: initialState.list,
+        draftEnabled: false
+      })
+    })
+  })
 })
