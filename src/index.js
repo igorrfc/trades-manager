@@ -12,7 +12,10 @@ import 'react-select/dist/react-select.css'
 import reducers from './reducers'
 
 import { App } from './containers'
-import registerServiceWorker from './registerServiceWorker'
+
+import 'bootstrap/dist/css/bootstrap.css'
+
+import './css/layout.css'
 
 require('dotenv').config()
 
@@ -38,4 +41,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 )
-registerServiceWorker()

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { Container, Row, Col } from 'reactstrap'
 
 import * as tradeActions from '../../actions/trade'
 
@@ -20,14 +21,18 @@ export class TradesBoard extends Component {
     }
 
     return (
-      <div>
-        <TradeTable
-          trades={list}
-          changeTradeAttribute={changeTradeAttribute}
-          removeTrade={removeTrade}
-        />
-        <a onClick={newTrade}>Inserir nova transação</a>
-      </div>
+      <Container>
+        <Row>
+          <Col>
+            <TradeTable
+              trades={list}
+              changeTradeAttribute={changeTradeAttribute}
+              removeTrade={removeTrade}
+            />
+            <a onClick={newTrade}>Inserir nova transação</a>
+          </Col>
+        </Row>
+      </Container>
     )
   }
 }
