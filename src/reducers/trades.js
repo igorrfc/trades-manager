@@ -1,4 +1,5 @@
 import moment from 'moment'
+import { equals } from 'ramda'
 
 import { actionTypes } from '../constants'
 
@@ -60,7 +61,11 @@ export default function(state = initialState, action) {
     case actionTypes.REMOVE_TRADE:
       return {
         ...state,
-        draftList: removeTrade(state.draftList, { key: action.key })
+        draftList: removeTrade(state.draftList, { key: action.key }),
+        draftEnabled: !equals(
+          removeTrade(state.draftList, { key: action.key }),
+          state.list
+        )
       }
     default:
       return state

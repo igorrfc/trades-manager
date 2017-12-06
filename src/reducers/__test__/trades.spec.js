@@ -50,8 +50,10 @@ describe('trades reducer', () => {
   })
 
   describe('REMOVE_TRADE', () => {
-    it('removes the trade matching the received key', () => {
-      const action = {
+    let action
+
+    beforeEach(() => {
+      action = {
         type: actionTypes.REMOVE_TRADE,
         key: 1
       }
@@ -61,14 +63,26 @@ describe('trades reducer', () => {
         { date: '2016-01-25', id: '41', kind: 1 },
         { date: '2016-01-25', id: '42', kind: 0 }
       ]
+    })
 
+    it('removes the trade matching the received key', () => {
       expect(trades(initialState, action)).toEqual({
         list: [],
         draftList: [
           { date: '2016-01-25', id: '40', kind: 0 },
           { date: '2016-01-25', id: '42', kind: 0 }
         ],
-        draftEnabled: false
+        draftEnabled: true
+      })
+    })
+
+    describe('when the new draftList turns equal to the list', () => {
+      it('changes the draftEnabled value to false', () => {
+        initialState.list = [
+          { date: '2016-01-25', id: '40', kind: 0 },
+          { date: '2016-01-25', id: '42', kind: 0 }
+        ]
+        expect(trades(initialState, action).draftEnabled).toBeFalsy()
       })
     })
   })
