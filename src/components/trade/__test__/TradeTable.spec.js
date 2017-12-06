@@ -1,26 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { shallow } from 'enzyme'
+
 import TradeTable from '../TradeTable'
 import TradeRow from '../TradeRow'
 
-import { shallow } from 'enzyme'
-
 describe('TradeTable', () => {
-  let rootDiv
-
-  beforeEach(() => {
-    rootDiv = document.createElement('div')
-  })
-
   it('renders without crashing', () => {
-    ReactDOM.render(<TradeTable trades={[]} />, rootDiv)
+    const rootDiv = document.createElement('div')
+    ReactDOM.render(<TradeTable trades={[]} changeTradeAttribute={jest.fn()} />, rootDiv)
   })
 
   describe('table headers', () => {
     let wrapper, headers
 
     beforeEach(() => {
-      wrapper = shallow(<TradeTable trades={[]} />)
+      wrapper = shallow(<TradeTable trades={[]} changeTradeAttribute={jest.fn()} />)
       headers = wrapper.find('th').map((el) => el.text())
     });
 
@@ -59,7 +54,7 @@ describe('TradeTable', () => {
           shares: '130.0'
         }
       ]
-      const wrapper = shallow(<TradeTable trades={trades} />)
+      const wrapper = shallow(<TradeTable trades={trades} changeTradeAttribute={jest.fn()} />)
 
       expect(wrapper.find(TradeRow).length).toBe(2)
     });

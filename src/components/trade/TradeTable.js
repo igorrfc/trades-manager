@@ -12,7 +12,7 @@ const HEADERS = {
 
 const TBODY_VALUES_ORDER = Object.keys(HEADERS)
 
-const TradeTable = ({ trades }) => (
+const TradeTable = ({ trades, changeTradeAttribute }) => (
   <table>
     <thead>
       <tr>
@@ -27,7 +27,12 @@ const TradeTable = ({ trades }) => (
     <tbody>
       {
         trades.map((trade, key) => (
-          <TradeRow key={key} trade={trade} dataOrder={TBODY_VALUES_ORDER} />
+          <TradeRow
+            key={key}
+            trade={trade}
+            dataOrder={TBODY_VALUES_ORDER}
+            changeAttribute={changeTradeAttribute(key)}
+          />
         ))
       }
     </tbody>

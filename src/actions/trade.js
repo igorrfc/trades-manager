@@ -12,3 +12,12 @@ export const fetchTradesList = () => ({
     }
   }
 })
+
+export const changeTradeAttribute = (dispatch) => (key) => (attribute, value) => (
+  dispatch({
+    type: actionTypes.CHANGE_TRADE_ATTRIBUTE,
+    field: attribute,
+    key,
+    value
+  })
+)
