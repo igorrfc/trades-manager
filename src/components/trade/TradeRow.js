@@ -54,9 +54,8 @@ class TradeRow extends Component {
             name="date"
             selected={selectedDate}
             dateFormat={BRAZILIAN_DATE_FORMAT}
-            onChange={value =>
-              changeAttribute('date', value.format('YYYY-MM-DD'))
-            }
+            onChange={value => changeAttribute('date', value.format('YYYY-MM-DD'))}
+            className="form-control"
           />
         </td>
         <td>
@@ -75,6 +74,7 @@ class TradeRow extends Component {
             decimalScale={8}
             value={sharesAmount}
             onValueChange={({ value }) => changeAttribute('shares', value)}
+            className="form-control"
           />
         </td>
         <td>
@@ -89,6 +89,7 @@ class TradeRow extends Component {
               this.handleSharesValueChange(floatValue)
             }
             value={sharesValue}
+            className="form-control"
           />
         </td>
         <td>

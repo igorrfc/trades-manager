@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row, Col, Button } from 'reactstrap'
 import { difference, isNil, isEmpty } from 'ramda'
 
 import * as tradeActions from '../../actions/trade'
 
-import TradeTable from '../../components/trade/TradeTable'
+import { TradeTable } from '../../components'
+
+import './TradesBoard.css'
 
 const findCreatedAndModifiedTrades = trades => ({
   newTrades: trades.draftList.filter(trade => isNil(trade.id)),
@@ -25,7 +27,9 @@ export class TradesBoard extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchTradesList()
+    const { fetchTradesList, trades: { list } } = this.props
+
+    fetchTradesList()
   }
 
   componentDidUpdate(prevProps) {
@@ -72,6 +76,10 @@ export class TradesBoard extends Component {
   }
 
   render() {
+    if (this.props.loading) {
+      return null
+    }
+
     const {
       trades,
       changeTradeAttribute,
@@ -87,34 +95,58 @@ export class TradesBoard extends Component {
     }
 
     return (
-      <Container>
-        <Row>
-          <Col>
-            <TradeTable
-              trades={list}
-              changeTradeAttribute={changeTradeAttribute}
-              removeTrade={removeTrade}
-            />
-            <a onClick={newTrade}>Inserir nova transação</a>
-            <button
-              name="saveTrades"
-              type="button"
-              disabled={savingDisabled}
-              onClick={() => this.handleTransactionsSaving()}
-            >
-              Salvar movimentações
-            </button>
+      <div className="tradesboard">
+        <Container>
+          <Row>
+            <Col>
+              <div className="tradesboard-table-wrap">
+                <TradeTable
+                  trades={list}
+                  changeTradeAttribute={changeTradeAttribute}
+                  removeTrade={removeTrade}
+                  className="tradesboard-table"
+                />
+              </div>
+            </Col>
+          </Row>
+        </Container>
 
-            <button
-              name="cancelTransaction"
-              onClick={cancelTransaction}
-              type="button"
-            >
-              Cancelar
-            </button>
-          </Col>
-        </Row>
-      </Container>
+        <div className="tradesboard-bottom fixed-bottom">
+          <Container>
+            <Row>
+              <Col>
+                <Button
+                  name="cancelTransaction"
+                  onClick={cancelTransaction}
+                  className="tradesboard-btn"
+                  outline
+                  color="danger"
+                >
+                  Cancelar
+                </Button>
+
+                <Button
+                  name="saveTrades"
+                  disabled={savingDisabled}
+                  onClick={() => this.handleTransactionsSaving()}
+                  className="tradesboard-btn float-right"
+                  color="success"
+                >
+                  Salvar movimentações
+                </Button>
+
+                <Button
+                  onClick={newTrade}
+                  className="tradesboard-link float-right"
+                  color="link"
+                >
+                  Inserir nova transação
+                </Button>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      </div>
     )
   }
 }

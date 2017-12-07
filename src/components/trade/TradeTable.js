@@ -1,4 +1,5 @@
 import React from 'react'
+import { Table } from 'reactstrap'
 
 import TradeRow from './TradeRow'
 
@@ -12,8 +13,8 @@ const HEADERS = {
 
 const TBODY_VALUES_ORDER = Object.keys(HEADERS)
 
-const TradeTable = ({ trades, changeTradeAttribute, removeTrade }) => (
-  <table>
+const TradeTable = ({ trades, changeTradeAttribute, removeTrade, className }) => (
+  <Table responsive className={className}>
     <thead>
       <tr>
         <th />
@@ -37,7 +38,7 @@ const TradeTable = ({ trades, changeTradeAttribute, removeTrade }) => (
         />
       ))}
     </tbody>
-  </table>
+  </Table>
 )
 
 export default TradeTable

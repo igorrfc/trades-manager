@@ -1,0 +1,18 @@
+.tradesboard-link, .tradesboard-btn {
+  margin-right: 1rem;
+  cursor: pointer; }
+
+.tradesboard-btn:last-child {
+  margin-right: 0; }
+
+.tradesboard-table {
+  margin: 0; }
+  .tradesboard-table-wrap {
+    margin: 3rem 0 6rem; }
+  .tradesboard-table thead th {
+    font-weight: 600; }
+
+.tradesboard-bottom {
+  padding: 1rem;
+  background-color: var(--light);
+  border-top: 0.0625rem solid var(--light-gray); }

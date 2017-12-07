@@ -1,0 +1,33 @@
+.loading {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: var(--black);
+	opacity: 0.5;
+
+	&-wrap {
+		height: calc(100vh - 3.5625rem);
+	}
+
+	&-spin {
+		margin: 2rem auto;
+		width: 4rem;
+		height: 4rem;
+		border: 0.5rem rgba(var(--white), 0.15) solid;
+		border-top: 0.5rem var(--white) solid;
+		border-radius: 50%;
+		animation: spin .8s infinite linear;
+	}
+}
+
+@-webkit-keyframes spin {
+	from { -webkit-transform: rotate(0deg); }
+	to { -webkit-transform: rotate(359deg); }
+}
+
+@keyframes spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(359deg); }
+}
