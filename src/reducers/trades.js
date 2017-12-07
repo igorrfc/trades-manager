@@ -40,7 +40,8 @@ export default function(state = initialState, action) {
       return {
         ...state,
         list: action.payload.data,
-        draftList: action.payload.data
+        draftList: action.payload.data,
+        draftEnabled: false
       }
     case actionTypes.CHANGE_TRADE_ATTRIBUTE:
       return {

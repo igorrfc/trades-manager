@@ -48,6 +48,40 @@ export const removeTrade = dispatch => key => id => {
   })
 }
 
+export const updateTrade = trade => ({
+  types: [
+    actionTypes.UPDATE_TRADE_START,
+    actionTypes.UPDATE_TRADE_SUCCESS,
+    actionTypes.UPDATE_TRADE_FAILURE
+  ],
+  payload: {
+    request: {
+      url: `trades/${trade.id}.json`,
+      method: 'put',
+      data: { trade }
+    }
+  }
+})
+
+export const createTrades = list => ({
+  types: [
+    actionTypes.CREATE_TRADES_START,
+    actionTypes.CREATE_TRADES_SUCCESS,
+    actionTypes.CREATE_TRADES_FAILURE
+  ],
+  payload: {
+    request: {
+      url: `investments.json`,
+      method: 'post',
+      data: {
+        investment: {
+          trades_attributes: list
+        }
+      }
+    }
+  }
+})
+
 export const cancelTransaction = () => ({
   type: actionTypes.CANCEL_TRANSACTION
 })
