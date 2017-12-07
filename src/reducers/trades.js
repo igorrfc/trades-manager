@@ -68,6 +68,16 @@ export default function(state = initialState, action) {
           state.list
         )
       }
+    case actionTypes.DELETE_TRADE_SUCCESS:
+      return {
+        ...state,
+        list: removeTrade(state.draftList, {
+          key: action.meta.previousAction.key
+        }),
+        draftList: removeTrade(state.draftList, {
+          key: action.meta.previousAction.key
+        })
+      }
     case actionTypes.CANCEL_TRANSACTION:
       return {
         ...state,
