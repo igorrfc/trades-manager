@@ -9,7 +9,11 @@ const EMPTY_TRADE = {
   shares: '0.0'
 }
 
-const initialState = { list: [], draftList: [], draftEnabled: false }
+const initialState = {
+  list: [],
+  draftList: [],
+  raftEnabled: false
+}
 
 const cloneCollection = collection => collection.map(item => ({ ...item }))
 

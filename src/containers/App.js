@@ -1,30 +1,46 @@
-import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import TradesBoard from './tradesboard/TradesBoard'
+import { Loading, Header } from '../components'
+
+import './App.css'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      loading: true
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    const { loading } = nextProps
+
+    setTimeout(() => {
+      this.setState({ loading })
+    }, 3000)
+  }
+
   render() {
+    const { loading } = this.state
+
     return (
-      <Grid fluid>
-        <Row>
-          <Col xs={12} md={12}>
-            <header>
-              <h1>TradesManager</h1>
-            </header>
-          </Col>
-        </Row>
+      <div>
+        <Header />
 
-        <hr />
+        <section className="app-content">
+          <TradesBoard loading={loading} />
 
-        <Row>
-          <Col xs={12} md={12}>
-            <TradesBoard />
-          </Col>
-        </Row>
-      </Grid>
+          {loading &&
+            <Loading />
+          }
+        </section>
+      </div>
     )
   }
 }
 
-export default App;
+const mapStateToProps = state => state
+
+export default connect(mapStateToProps)(App)
