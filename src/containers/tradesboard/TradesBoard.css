@@ -28,8 +28,9 @@
 .tradesboard-table-arrow, .tradesboard-table-remove {
   display: inline-block;
   padding: 0.5625rem 0; }
-  .tradesboard-table-arrow svg, .tradesboard-table-remove svg {
-    fill: var(--gray); }
+
+.tradesboard-table-remove svg {
+  fill: var(--gray); }
 
 .tradesboard-table-remove {
   cursor: pointer; }

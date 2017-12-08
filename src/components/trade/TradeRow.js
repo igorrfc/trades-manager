@@ -4,8 +4,9 @@ import moment from 'moment'
 import NumberFormat from 'react-number-format'
 import Select from 'react-select'
 
-import { Remove, Arrow } from '../icons'
+import { Remove } from '../icons'
 import TotalAmountInput from './TotalAmountInput'
+import TradeTypeIcon from './TradeTypeIcon'
 
 const BRAZILIAN_DATE_FORMAT = 'DD/MM/YYYY'
 
@@ -46,7 +47,7 @@ class TradeRow extends Component {
       <tr>
         <td className="tradesboard-table-icon-column tradesboard-table-icon-column-arrow text-center">
           <a className="tradesboard-table-arrow">
-            <Arrow />
+            <TradeTypeIcon type={tradeKindValue} />
           </a>
         </td>
 
@@ -55,7 +56,9 @@ class TradeRow extends Component {
             name="date"
             selected={selectedDate}
             dateFormat={BRAZILIAN_DATE_FORMAT}
-            onChange={value => changeAttribute('date', value.format('YYYY-MM-DD'))}
+            onChange={value =>
+              changeAttribute('date', value.format('YYYY-MM-DD'))
+            }
             className="form-control tradesboard-form-control"
           />
         </td>
@@ -111,7 +114,7 @@ class TradeRow extends Component {
             onClick={() => removeTrade(trade.id)}
             className="tradesboard-table-remove"
           >
-              <Remove />
+            <Remove />
           </a>
         </td>
       </tr>

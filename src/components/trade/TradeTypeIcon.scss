@@ -1,0 +1,10 @@
+.tradetypeicon {
+  &-subscription {
+    fill: var(--apple);
+  }
+
+  &-redemption {
+    fill: var(--science-blue);
+    transform: rotate(180deg);
+  }
+}

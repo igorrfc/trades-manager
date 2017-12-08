@@ -5,9 +5,10 @@ import Select from 'react-select'
 import DatePicker from 'react-datepicker'
 import NumberFormat from 'react-number-format'
 
-import { Remove, Arrow } from '../../icons'
+import { Remove } from '../../icons'
 import TradeRow from '../TradeRow'
 import TotalAmountInput from '../TotalAmountInput'
+import TradeTypeIcon from '../TradeTypeIcon'
 
 describe('TradeRow', () => {
   it('renders without crashing', () => {
@@ -42,7 +43,7 @@ describe('TradeRow', () => {
     })
 
     it('renders the trade kind icon as the first td element', () => {
-      const input = tdElements.at(0).find(Arrow)
+      const input = tdElements.at(0).find(TradeTypeIcon)
 
       expect(input.length).toEqual(1)
     })
