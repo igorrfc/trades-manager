@@ -19,6 +19,11 @@ const initialState = {
 
 const cloneCollection = collection => collection.map(item => ({ ...item }))
 
+const orderByDate = collection =>
+  cloneCollection(collection).sort((first, second) =>
+    moment(first.date).isAfter(second.date)
+  )
+
 const changeResourceAttribute = (collection, data) => {
   let newCollection = cloneCollection(collection)
   const resource = newCollection[data.key]
@@ -45,9 +50,11 @@ export default function(state = initialState, action) {
     case actionTypes.REQUEST_TRADES_SUCCESS:
       return {
         ...state,
-        list: action.payload.data,
-        draftList: action.payload.data,
-        amountBalances: calculateTradesBalance(action.payload.data),
+        list: orderByDate(action.payload.data),
+        draftList: orderByDate(action.payload.data),
+        amountBalances: calculateTradesBalance(
+          orderByDate(action.payload.data)
+        ),
         draftEnabled: false
       }
     case actionTypes.CHANGE_TRADE_ATTRIBUTE:

@@ -10,6 +10,46 @@ describe('trades reducer', () => {
     initialState = { list: [], draftList: [], draftEnabled: false }
   })
 
+  describe('REQUEST_TRADES_SUCCESS', () => {
+    let action
+
+    beforeEach(() => {
+      action = {
+        type: actionTypes.REQUEST_TRADES_SUCCESS,
+        payload: {}
+      }
+    })
+
+    it('updates the list and draftList according to payload data', () => {
+      action.payload.data = [
+        { id: 1, date: '2017-12-08', kind: 0, shares: '10.0' },
+        { id: 2, date: '2017-12-08', kind: 0, shares: '10.0' }
+      ]
+
+      expect(trades(initialState, action).list).toEqual(action.payload.data)
+      expect(trades(initialState, action).draftList).toEqual(
+        action.payload.data
+      )
+    })
+
+    it('orders the trades by date ASC', () => {
+      action.payload.data = [
+        { id: 1, date: '2017-12-09', kind: 0, shares: '10.0' },
+        { id: 2, date: '2017-12-08', kind: 0, shares: '10.0' }
+      ]
+
+      expect(trades(initialState, action).list).toEqual([
+        { id: 2, date: '2017-12-08', kind: 0, shares: '10.0' },
+        { id: 1, date: '2017-12-09', kind: 0, shares: '10.0' }
+      ])
+
+      expect(trades(initialState, action).draftList).toEqual([
+        { id: 2, date: '2017-12-08', kind: 0, shares: '10.0' },
+        { id: 1, date: '2017-12-09', kind: 0, shares: '10.0' }
+      ])
+    })
+  })
+
   describe('CHANGE_TRADE_ATTRIBUTE', () => {
     it('changes the attribute value of the resource matching the received key', () => {
       const action = {
