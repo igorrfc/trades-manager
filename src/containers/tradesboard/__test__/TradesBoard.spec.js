@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { shallow } from 'enzyme'
+import { Alert } from 'reactstrap'
 
 import { TradesBoard } from '../TradesBoard'
 
@@ -14,7 +15,7 @@ describe('TradesBoard', () => {
   it('renders without crashing', () => {
     ReactDOM.render(
       <TradesBoard
-        trades={{ list: [] }}
+        trades={{ list: [], amountBalances: [] }}
         fetchTradesList={jest.fn()}
         changeTradeAttribute={jest.fn()}
         newTrade={jest.fn()}
@@ -28,7 +29,7 @@ describe('TradesBoard', () => {
       const fetchTradesList = jest.fn()
       ReactDOM.render(
         <TradesBoard
-          trades={{ list: [] }}
+          trades={{ list: [], amountBalances: [] }}
           fetchTradesList={fetchTradesList}
           changeTradeAttribute={jest.fn()}
           newTrade={jest.fn()}
@@ -39,12 +40,27 @@ describe('TradesBoard', () => {
     })
   })
 
+  describe('when there is an invalid shares amount balance', () => {
+    it('show an Alert component', () => {
+      const wrapper = shallow(
+        <TradesBoard
+          trades={{ list: [], amountBalances: [{ valid: false }] }}
+          fetchTradesList={jest.fn()}
+          changeTradeAttribute={jest.fn()}
+          newTrade={jest.fn()}
+        />
+      )
+
+      expect(wrapper.find(Alert).length).toEqual(1)
+    })
+  })
+
   describe('when the insert new trade link is clicked', () => {
     it('calls the newTrade action creator received as prop', () => {
       const newTrade = jest.fn()
       const wrapper = shallow(
         <TradesBoard
-          trades={{ list: [] }}
+          trades={{ list: [], amountBalances: [] }}
           fetchTradesList={jest.fn()}
           changeTradeAttribute={jest.fn()}
           newTrade={newTrade}
@@ -62,7 +78,7 @@ describe('TradesBoard', () => {
       const cancelTransaction = jest.fn()
       const wrapper = shallow(
         <TradesBoard
-          trades={{ list: [] }}
+          trades={{ list: [], amountBalances: [] }}
           fetchTradesList={jest.fn()}
           changeTradeAttribute={jest.fn()}
           newTrade={jest.fn()}
@@ -100,7 +116,8 @@ describe('TradesBoard', () => {
             { id: 3, date: '2016-02-25', kind: 1, shares: '200.0' },
             { date: '2016-03-25', kind: 1, shares: '210.0' },
             { date: '2016-03-25', kind: 0, shares: '210.0' }
-          ]
+          ],
+          amountBalances: []
         }
 
         wrapper = shallow(
@@ -149,7 +166,8 @@ describe('TradesBoard', () => {
             { id: 1, date: '2016-01-25', kind: 0, shares: '130.0' },
             { date: '2016-03-25', kind: 1, shares: '210.0' },
             { date: '2016-03-25', kind: 0, shares: '210.0' }
-          ]
+          ],
+          amountBalances: []
         }
 
         wrapper = shallow(
@@ -180,7 +198,8 @@ describe('TradesBoard', () => {
       beforeEach(() => {
         trades = {
           list: [{ id: 1, date: '2016-01-25', kind: 0, shares: '130.0' }],
-          draftList: [{ id: 1, date: '2016-01-25', kind: 1, shares: '130.0' }]
+          draftList: [{ id: 1, date: '2016-01-25', kind: 1, shares: '130.0' }],
+          amountBalances: []
         }
 
         wrapper = shallow(

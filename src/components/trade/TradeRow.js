@@ -4,6 +4,7 @@ import moment from 'moment'
 import NumberFormat from 'react-number-format'
 import Select from 'react-select'
 import classnames from 'classnames'
+import { isEmpty } from 'ramda'
 
 import { Remove } from '../icons'
 import TotalAmountInput from './TotalAmountInput'
@@ -26,8 +27,10 @@ class TradeRow extends Component {
   }
 
   handleSharesValueChange(value) {
+    const validValue = Number.isInteger(value) ? value : 0
+
     this.setState({
-      sharesValue: value
+      sharesValue: validValue
     })
   }
 
@@ -86,7 +89,9 @@ class TradeRow extends Component {
             decimalSeparator=","
             decimalScale={8}
             value={sharesAmount}
-            onValueChange={({ value }) => changeAttribute('shares', value)}
+            onValueChange={({ value }) =>
+              changeAttribute('shares', isEmpty(value) ? '0' : value)
+            }
             className={sharesInputClasses}
           />
         </td>

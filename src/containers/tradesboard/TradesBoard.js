@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Container, Row, Col, Button } from 'reactstrap'
-import { difference, isNil, isEmpty } from 'ramda'
+import { Container, Row, Col, Button, Alert } from 'reactstrap'
+import { any, difference, isNil, isEmpty } from 'ramda'
 
 import * as tradeActions from '../../actions/trade'
 
@@ -16,6 +16,9 @@ const findCreatedAndModifiedTrades = trades => ({
     trade => trade.id
   )
 })
+
+const isAmountBalanceInvalid = amountBalances =>
+  any(trade => !trade.valid)(amountBalances)
 
 export class TradesBoard extends Component {
   constructor(props) {
@@ -75,6 +78,19 @@ export class TradesBoard extends Component {
     })
   }
 
+  renderAlert() {
+    return (
+      <Row>
+        <Col xs="12">
+          <Alert color="danger">
+            Não é possível fazer o resgate de um número de cotas maior que o de
+            cotas aplicadas
+          </Alert>
+        </Col>
+      </Row>
+    )
+  }
+
   render() {
     if (this.props.loading) {
       return null
@@ -97,6 +113,7 @@ export class TradesBoard extends Component {
     return (
       <div className="tradesboard">
         <Container>
+          {isAmountBalanceInvalid(trades.amountBalances) && this.renderAlert()}
           <Row>
             <Col xs="12">
               <div className="tradesboard-table-wrap">
