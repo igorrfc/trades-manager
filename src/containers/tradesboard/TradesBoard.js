@@ -48,7 +48,17 @@ export class TradesBoard extends Component {
       })
     }
 
-    if (savingDisabled && (!isEmpty(newTrades) || !isEmpty(modifiedTrades))) {
+    if (!savingDisabled && isAmountBalanceInvalid(trades.amountBalances)) {
+      this.setState({
+        savingDisabled: true
+      })
+    }
+
+    if (
+      savingDisabled &&
+      !isAmountBalanceInvalid(trades.amountBalances) &&
+      (!isEmpty(newTrades) || !isEmpty(modifiedTrades))
+    ) {
       this.setState({
         savingDisabled: false
       })
