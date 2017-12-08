@@ -13,7 +13,13 @@ const HEADERS = {
 
 const TBODY_VALUES_ORDER = Object.keys(HEADERS)
 
-const TradeTable = ({ trades, changeTradeAttribute, removeTrade, className }) => (
+const TradeTable = ({
+  trades,
+  changeTradeAttribute,
+  removeTrade,
+  className,
+  amountBalances
+}) => (
   <Table responsive className={className}>
     <thead>
       <tr>
@@ -35,6 +41,7 @@ const TradeTable = ({ trades, changeTradeAttribute, removeTrade, className }) =>
           dataOrder={TBODY_VALUES_ORDER}
           changeAttribute={changeTradeAttribute(key)}
           removeTrade={removeTrade(key)}
+          amountBalance={amountBalances[key]}
         />
       ))}
     </tbody>

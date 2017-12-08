@@ -20,20 +20,16 @@ describe('trades reducer', () => {
       }
 
       initialState.draftList = [
-        { date: '2016-01-25', id: '40', kind: 0 },
-        { date: '2016-01-25', id: '41', kind: 1 },
-        { date: '2016-01-25', id: '42', kind: 0 }
+        { date: '2016-01-25', id: '40', kind: 0, shares: '1.0' },
+        { date: '2016-01-25', id: '41', kind: 1, shares: '1.0' },
+        { date: '2016-01-25', id: '42', kind: 0, shares: '1.0' }
       ]
 
-      expect(trades(initialState, action)).toEqual({
-        list: [],
-        draftList: [
-          { date: '2016-01-25', id: '40', kind: 0 },
-          { date: '2016-01-22', id: '41', kind: 1 },
-          { date: '2016-01-25', id: '42', kind: 0 }
-        ],
-        draftEnabled: true
-      })
+      expect(trades(initialState, action).draftList).toEqual([
+        { date: '2016-01-25', id: '40', kind: 0, shares: '1.0' },
+        { date: '2016-01-22', id: '41', kind: 1, shares: '1.0' },
+        { date: '2016-01-25', id: '42', kind: 0, shares: '1.0' }
+      ])
     })
   })
 
@@ -66,14 +62,10 @@ describe('trades reducer', () => {
     })
 
     it('removes the trade matching the received key', () => {
-      expect(trades(initialState, action)).toEqual({
-        list: [],
-        draftList: [
-          { date: '2016-01-25', id: '40', kind: 0 },
-          { date: '2016-01-25', id: '42', kind: 0 }
-        ],
-        draftEnabled: true
-      })
+      expect(trades(initialState, action).draftList).toEqual([
+        { date: '2016-01-25', id: '40', kind: 0 },
+        { date: '2016-01-25', id: '42', kind: 0 }
+      ])
     })
 
     describe('when the new draftList turns equal to the list', () => {
@@ -102,11 +94,7 @@ describe('trades reducer', () => {
         { date: '2016-01-25', id: '43', kind: 1 }
       ]
 
-      expect(trades(initialState, action)).toEqual({
-        list: initialState.list,
-        draftList: initialState.list,
-        draftEnabled: false
-      })
+      expect(trades(initialState, action).draftList).toEqual(initialState.list)
     })
   })
 })

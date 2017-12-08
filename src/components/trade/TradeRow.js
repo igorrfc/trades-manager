@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import NumberFormat from 'react-number-format'
 import Select from 'react-select'
+import classnames from 'classnames'
 
 import { Remove } from '../icons'
 import TotalAmountInput from './TotalAmountInput'
@@ -31,8 +32,13 @@ class TradeRow extends Component {
   }
 
   render() {
-    const { trade, changeAttribute, removeTrade } = this.props
+    const { trade, changeAttribute, removeTrade, amountBalance } = this.props
     const { sharesValue } = this.state
+    const sharesInputClasses = classnames({
+      'form-control': true,
+      'tradesboard-form-control': true,
+      'is-invalid': !amountBalance.valid
+    })
     let sharesAmount = ''
     let selectedDate = moment()
     let tradeKindValue = 0
@@ -81,7 +87,7 @@ class TradeRow extends Component {
             decimalScale={8}
             value={sharesAmount}
             onValueChange={({ value }) => changeAttribute('shares', value)}
-            className="form-control tradesboard-form-control"
+            className={sharesInputClasses}
           />
         </td>
 

@@ -19,7 +19,11 @@ describe('TradeRow', () => {
       shares: '130.0'
     }
     ReactDOM.render(
-      <TradeRow trade={trade} changeAttribute={jest.fn()} />,
+      <TradeRow
+        trade={trade}
+        changeAttribute={jest.fn()}
+        amountBalance={{ valid: true }}
+      />,
       tbody
     )
   })
@@ -35,11 +39,64 @@ describe('TradeRow', () => {
             kind: 0,
             shares: '130.0'
           }}
+          amountBalance={{ valid: true }}
           changeAttribute={jest.fn()}
         />
       )
 
       tdElements = wrapper.find('td')
+    })
+
+    describe('shares input', () => {
+      let defaultClasses
+
+      beforeEach(() => {
+        defaultClasses = 'form-control tradesboard-form-control'
+      })
+
+      describe('when the amount balance is valid', () => {
+        it('renders the component only with the default classes', () => {
+          const wrapper = shallow(
+            <TradeRow
+              trade={{
+                date: '2016-01-25',
+                kind: 0,
+                shares: '130.0'
+              }}
+              amountBalance={{ valid: true }}
+              changeAttribute={jest.fn()}
+            />
+          )
+          const sharesInput = wrapper.findWhere(
+            el => el.prop('name') === 'shares'
+          )
+
+          expect(sharesInput.prop('className')).toEqual(defaultClasses)
+        })
+      })
+
+      describe('when the amount balance is invalid', () => {
+        it('renders the component with the default classes plus the invalid class', () => {
+          const wrapper = shallow(
+            <TradeRow
+              trade={{
+                date: '2016-01-25',
+                kind: 0,
+                shares: '130.0'
+              }}
+              amountBalance={{ valid: false }}
+              changeAttribute={jest.fn()}
+            />
+          )
+          const sharesInput = wrapper.findWhere(
+            el => el.prop('name') === 'shares'
+          )
+
+          expect(sharesInput.prop('className')).toEqual(
+            `${defaultClasses} is-invalid`
+          )
+        })
+      })
     })
 
     it('renders the trade kind icon as the first td element', () => {

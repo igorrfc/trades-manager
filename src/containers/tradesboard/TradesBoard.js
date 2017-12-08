@@ -102,6 +102,7 @@ export class TradesBoard extends Component {
               <div className="tradesboard-table-wrap">
                 <TradeTable
                   trades={list}
+                  amountBalances={trades.amountBalances}
                   changeTradeAttribute={changeTradeAttribute}
                   removeTrade={removeTrade}
                   className="tradesboard-table"
