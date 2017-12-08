@@ -16,7 +16,7 @@
     "react-redux": "^5.0.6",
     "react-select": "^1.1.0",
     "react-test-renderer": "^16.2.0",
-    "react-transition-group": "^2.2.1",
+    "react-transition-group": "^1.1.2",
     "reactstrap": "^4.8.0",
     "redux": "^3.7.2",
     "redux-axios-middleware": "^4.0.0",
@@ -38,6 +38,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
+    "watch-css":
+      "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
   }
 }
