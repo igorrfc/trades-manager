@@ -51,7 +51,7 @@ describe('TradesBoard', () => {
         />
       )
 
-      wrapper.find('a').simulate('click')
+      wrapper.findWhere(el => el.prop('name') === 'newTrade').simulate('click')
 
       expect(newTrade).toHaveBeenCalled()
     })

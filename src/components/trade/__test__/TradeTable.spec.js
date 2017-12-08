@@ -40,16 +40,16 @@ describe('TradeTable', () => {
       expect(headers.filter(h => h === 'Tipo').length).toBe(1)
     })
 
-    it('must have a Quantidade de Cotas header', () => {
-      expect(headers.filter(h => h === 'Quantidade de Cotas').length).toBe(1)
+    it('must have a Qtd de Cotas header', () => {
+      expect(headers.filter(h => h === 'Qtd de cotas').length).toBe(1)
     })
 
     it('must have a Valor por Cota header', () => {
-      expect(headers.filter(h => h === 'Valor por Cota').length).toBe(1)
+      expect(headers.filter(h => h === 'Valor por cota').length).toBe(1)
     })
 
     it('must have a Valor Total', () => {
-      expect(headers.filter(h => h === 'Valor Total').length).toBe(1)
+      expect(headers.filter(h => h === 'Valor total').length).toBe(1)
     })
   })
 

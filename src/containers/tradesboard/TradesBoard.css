@@ -5,14 +5,49 @@
 .tradesboard-btn:last-child {
   margin-right: 0; }
 
-.tradesboard-table {
-  margin: 0; }
-  .tradesboard-table-wrap {
-    margin: 3rem 0 6rem; }
-  .tradesboard-table thead th {
-    font-weight: 600; }
+.tradesboard-table.table {
+  margin: 0;
+  background-color: var(--white); }
+  .tradesboard-table.table thead th {
+    font-weight: 500;
+    color: var(--gray);
+    border: 0; }
+
+.tradesboard-table-wrap {
+  margin: 0 0 7rem;
+  border: 0.0625rem solid var(--iron);
+  border-radius: 0.3125rem; }
+
+.tradesboard-table-icon-column {
+  min-width: 4rem; }
+  .tradesboard-table-icon-column-arrow {
+    padding-right: 0; }
+  .tradesboard-table-icon-column-remove {
+    padding-left: 0; }
+
+.tradesboard-table-arrow, .tradesboard-table-remove {
+  display: inline-block;
+  padding: 0.5625rem 0; }
+  .tradesboard-table-arrow svg, .tradesboard-table-remove svg {
+    fill: var(--gray); }
+
+.tradesboard-table-remove {
+  cursor: pointer; }
+  .tradesboard-table-remove:hover svg {
+    fill: var(--danger); }
 
 .tradesboard-bottom {
   padding: 1rem;
-  background-color: var(--light);
-  border-top: 0.0625rem solid var(--light-gray); }
+  background-color: var(--white);
+  border-top: 0.0625rem solid var(--athens-gray); }
+
+.tradesboard-select-control, .tradesboard-form-control {
+  display: inline-block !important;
+  min-width: 9rem;
+  color: var(--gray) !important; }
+  .tradesboard-select-control .Select-value-label,
+  .tradesboard-select-control .Select-input, .tradesboard-form-control .Select-value-label,
+  .tradesboard-form-control .Select-input {
+    color: var(--gray) !important; }
+  .tradesboard-select-control .Select-clear-zone, .tradesboard-form-control .Select-clear-zone {
+    display: none; }

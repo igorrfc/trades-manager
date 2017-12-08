@@ -6,9 +6,9 @@ import TradeRow from './TradeRow'
 const HEADERS = {
   date: 'Data',
   kind: 'Tipo',
-  shares: 'Quantidade de Cotas',
-  shareValue: 'Valor por Cota',
-  totalAmount: 'Valor Total'
+  shares: 'Qtd de cotas',
+  shareValue: 'Valor por cota',
+  totalAmount: 'Valor total'
 }
 
 const TBODY_VALUES_ORDER = Object.keys(HEADERS)

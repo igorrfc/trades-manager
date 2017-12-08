@@ -44,28 +44,32 @@ class TradeRow extends Component {
 
     return (
       <tr>
-        <td>
-          <a>
+        <td className="tradesboard-table-icon-column tradesboard-table-icon-column-arrow text-center">
+          <a className="tradesboard-table-arrow">
             <Arrow />
           </a>
         </td>
+
         <td>
           <DatePicker
             name="date"
             selected={selectedDate}
             dateFormat={BRAZILIAN_DATE_FORMAT}
             onChange={value => changeAttribute('date', value.format('YYYY-MM-DD'))}
-            className="form-control"
+            className="form-control tradesboard-form-control"
           />
         </td>
+
         <td>
           <Select
             name="kind"
             options={KIND_LIST}
             value={tradeKindValue}
             onChange={({ value }) => changeAttribute('kind', value)}
+            className="tradesboard-select-control"
           />
         </td>
+
         <td>
           <NumberFormat
             name="shares"
@@ -74,9 +78,10 @@ class TradeRow extends Component {
             decimalScale={8}
             value={sharesAmount}
             onValueChange={({ value }) => changeAttribute('shares', value)}
-            className="form-control"
+            className="form-control tradesboard-form-control"
           />
         </td>
+
         <td>
           <NumberFormat
             name="sharesValue"
@@ -89,15 +94,24 @@ class TradeRow extends Component {
               this.handleSharesValueChange(floatValue)
             }
             value={sharesValue}
-            className="form-control"
+            className="form-control tradesboard-form-control"
           />
         </td>
+
         <td>
-          <TotalAmountInput shares={trade.shares} sharesValue={sharesValue} />
+          <TotalAmountInput
+            shares={trade.shares}
+            sharesValue={sharesValue}
+            className="form-control tradesboard-form-control"
+          />
         </td>
-        <td>
-          <a onClick={() => removeTrade(trade.id)}>
-            <Remove />
+
+        <td className="tradesboard-table-icon-column tradesboard-table-icon-column-remove text-center">
+          <a
+            onClick={() => removeTrade(trade.id)}
+            className="tradesboard-table-remove"
+          >
+              <Remove />
           </a>
         </td>
       </tr>

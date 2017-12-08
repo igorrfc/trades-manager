@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react'
 
 const Remove = ({ className }) => (
   <svg
     className={className}
-    width="10"
-    height="10"
+    width="16"
+    height="16"
     viewBox="0 0 1792 1792"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -12,4 +12,4 @@ const Remove = ({ className }) => (
   </svg>
 );
 
-export default Remove;
+export default Remove

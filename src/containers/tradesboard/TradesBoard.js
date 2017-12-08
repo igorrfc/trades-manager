@@ -27,7 +27,7 @@ export class TradesBoard extends Component {
   }
 
   componentWillMount() {
-    const { fetchTradesList, trades: { list } } = this.props
+    const { fetchTradesList } = this.props
 
     fetchTradesList()
   }
@@ -98,7 +98,7 @@ export class TradesBoard extends Component {
       <div className="tradesboard">
         <Container>
           <Row>
-            <Col>
+            <Col xs="12">
               <div className="tradesboard-table-wrap">
                 <TradeTable
                   trades={list}
@@ -114,7 +114,7 @@ export class TradesBoard extends Component {
         <div className="tradesboard-bottom fixed-bottom">
           <Container>
             <Row>
-              <Col>
+              <Col xs="12">
                 <Button
                   name="cancelTransaction"
                   onClick={cancelTransaction}
@@ -132,15 +132,16 @@ export class TradesBoard extends Component {
                   className="tradesboard-btn float-right"
                   color="success"
                 >
-                  Salvar movimentações
+                  Salvar
                 </Button>
 
                 <Button
+                  name="newTrade"
                   onClick={newTrade}
                   className="tradesboard-link float-right"
                   color="link"
                 >
-                  Inserir nova transação
+                  Adicionar nova transação
                 </Button>
               </Col>
             </Row>

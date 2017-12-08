@@ -10,20 +10,75 @@
   }
 
   &-table {
-    margin: 0;
+    &.table {
+      margin: 0;
+      background-color: var(--white);
 
-    &-wrap {
-      margin: 3rem 0 6rem;
+      thead th {
+        font-weight: 500;
+        color: var(--gray);
+        border: 0;
+      }
     }
 
-    thead th {
-      font-weight: 600;
+    &-wrap {
+      margin: 0 0 7rem;
+      border: 0.0625rem solid var(--iron);
+      border-radius: 0.3125rem;
+    }
+
+    &-icon-column {
+      min-width: 4rem;
+
+      &-arrow {
+        padding-right: 0;
+      }
+
+      &-remove {
+        padding-left: 0;
+      }
+    }
+
+    &-arrow,
+    &-remove {
+      display: inline-block;
+      padding: 0.5625rem 0;
+
+      svg {
+        fill: var(--gray);
+      }
+    }
+
+    &-remove {
+      cursor: pointer;
+
+      &:hover {
+        svg {
+          fill: var(--danger);
+        }
+      }
     }
   }
 
   &-bottom {
     padding: 1rem;
-    background-color: var(--light);
-    border-top: 0.0625rem solid var(--light-gray);
+    background-color: var(--white);
+    border-top: 0.0625rem solid var(--athens-gray);
+  }
+
+  &-select-control,
+  &-form-control {
+    display: inline-block !important;
+    min-width: 9rem;
+    color: var(--gray) !important;
+
+    .Select-value-label,
+    .Select-input {
+      color: var(--gray) !important;
+    }
+
+    .Select-clear-zone {
+      display: none;
+    }
   }
 }
