@@ -108,6 +108,7 @@ export class TradesBoard extends Component {
 
     const {
       trades,
+      prices,
       changeTradeAttribute,
       newTrade,
       removeTrade,
@@ -129,6 +130,7 @@ export class TradesBoard extends Component {
               <div className="tradesboard-table-wrap">
                 <TradeTable
                   trades={list}
+                  prices={prices.list}
                   amountBalances={trades.amountBalances}
                   changeTradeAttribute={changeTradeAttribute}
                   removeTrade={removeTrade}

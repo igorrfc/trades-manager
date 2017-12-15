@@ -22,7 +22,15 @@ class TradeRow extends Component {
     super(props)
 
     this.state = {
-      sharesValue: 0
+      sharesValue: props.sharesValue
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.sharesValue !== this.props.sharesValue) {
+      this.setState({
+        sharesValue: this.props.sharesValue
+      })
     }
   }
 
@@ -35,7 +43,13 @@ class TradeRow extends Component {
   }
 
   render() {
-    const { trade, changeAttribute, removeTrade, amountBalance } = this.props
+    const {
+      trade,
+      changeAttribute,
+      removeTrade,
+      amountBalance,
+      sharesValue: sharesValueDefault
+    } = this.props
     const { sharesValue } = this.state
     const sharesInputClasses = classnames({
       'form-control': true,
@@ -98,6 +112,7 @@ class TradeRow extends Component {
 
         <td>
           <NumberFormat
+            disabled={sharesValueDefault !== 0}
             name="sharesValue"
             fixedDecimalScale
             prefix="R$"

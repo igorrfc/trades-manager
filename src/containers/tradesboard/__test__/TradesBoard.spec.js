@@ -16,6 +16,7 @@ describe('TradesBoard', () => {
     ReactDOM.render(
       <TradesBoard
         trades={{ list: [], amountBalances: [] }}
+        prices={{ list: [] }}
         fetchTradesList={jest.fn()}
         changeTradeAttribute={jest.fn()}
         newTrade={jest.fn()}
@@ -30,6 +31,7 @@ describe('TradesBoard', () => {
       ReactDOM.render(
         <TradesBoard
           trades={{ list: [], amountBalances: [] }}
+          prices={{ list: [] }}
           fetchTradesList={fetchTradesList}
           changeTradeAttribute={jest.fn()}
           newTrade={jest.fn()}
@@ -45,6 +47,7 @@ describe('TradesBoard', () => {
       const wrapper = shallow(
         <TradesBoard
           trades={{ list: [], amountBalances: [{ valid: false }] }}
+          prices={{ list: [] }}
           fetchTradesList={jest.fn()}
           changeTradeAttribute={jest.fn()}
           newTrade={jest.fn()}
@@ -61,6 +64,7 @@ describe('TradesBoard', () => {
       const wrapper = shallow(
         <TradesBoard
           trades={{ list: [], amountBalances: [] }}
+          prices={{ list: [] }}
           fetchTradesList={jest.fn()}
           changeTradeAttribute={jest.fn()}
           newTrade={newTrade}
@@ -79,6 +83,7 @@ describe('TradesBoard', () => {
       const wrapper = shallow(
         <TradesBoard
           trades={{ list: [], amountBalances: [] }}
+          prices={{ list: [] }}
           fetchTradesList={jest.fn()}
           changeTradeAttribute={jest.fn()}
           newTrade={jest.fn()}
@@ -123,6 +128,7 @@ describe('TradesBoard', () => {
         wrapper = shallow(
           <TradesBoard
             trades={trades}
+            prices={{ list: [] }}
             fetchTradesList={jest.fn()}
             changeTradeAttribute={jest.fn()}
             newTrade={jest.fn()}
@@ -173,6 +179,7 @@ describe('TradesBoard', () => {
         wrapper = shallow(
           <TradesBoard
             trades={trades}
+            prices={{ list: [] }}
             fetchTradesList={jest.fn()}
             changeTradeAttribute={jest.fn()}
             newTrade={jest.fn()}
@@ -205,6 +212,7 @@ describe('TradesBoard', () => {
         wrapper = shallow(
           <TradesBoard
             trades={trades}
+            prices={{ list: [] }}
             fetchTradesList={jest.fn()}
             changeTradeAttribute={jest.fn()}
             newTrade={jest.fn()}

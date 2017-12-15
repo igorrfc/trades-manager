@@ -13,8 +13,19 @@ const HEADERS = {
 
 const TBODY_VALUES_ORDER = Object.keys(HEADERS)
 
+const getSharesValue = (prices, { tradeDate }) => {
+  const priceMatched = prices.filter(price => price.date === tradeDate)[0]
+
+  if (priceMatched) {
+    return parseFloat(priceMatched.price)
+  }
+
+  return 0
+}
+
 const TradeTable = ({
   trades,
+  prices,
   changeTradeAttribute,
   removeTrade,
   className,
@@ -39,6 +50,7 @@ const TradeTable = ({
           key={key}
           trade={trade}
           dataOrder={TBODY_VALUES_ORDER}
+          sharesValue={getSharesValue(prices, { tradeDate: trade.date })}
           changeAttribute={changeTradeAttribute(key)}
           removeTrade={removeTrade(key)}
           amountBalance={amountBalances[key]}

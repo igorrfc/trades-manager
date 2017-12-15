@@ -11,6 +11,7 @@ describe('TradeTable', () => {
     ReactDOM.render(
       <TradeTable
         trades={[]}
+        prices={[]}
         amountBalances={[]}
         changeTradeAttribute={jest.fn()}
         removeTrade={jest.fn()}
@@ -26,6 +27,7 @@ describe('TradeTable', () => {
       wrapper = shallow(
         <TradeTable
           trades={[]}
+          prices={[]}
           changeTradeAttribute={jest.fn()}
           removeTrade={jest.fn()}
         />
@@ -71,6 +73,7 @@ describe('TradeTable', () => {
       const wrapper = shallow(
         <TradeTable
           trades={trades}
+          prices={[]}
           amountBalances={[{ valid: true }, { valid: true }]}
           changeTradeAttribute={jest.fn()}
           removeTrade={jest.fn()}

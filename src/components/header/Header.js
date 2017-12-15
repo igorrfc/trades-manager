@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { isEmpty } from 'ramda'
-import DatePicker from 'react-datepicker'
 import moment from 'moment'
-
-import { date } from '../../constants'
 
 import { Remove } from '../icons'
 
