@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { equals } from 'ramda'
+import { equals, last } from 'ramda'
 
 import { actionTypes } from '../constants'
 import { calculateTradesBalance } from '../utils/trades'
@@ -14,6 +14,7 @@ const initialState = {
   list: [],
   draftList: [],
   amountBalances: [],
+  currentSharesValue: {},
   raftEnabled: false
 }
 
@@ -56,6 +57,14 @@ export default function(state = initialState, action) {
           orderByDate(action.payload.data)
         ),
         draftEnabled: false
+      }
+    case actionTypes.REQUEST_SHARES_VALUE_SUCCESS:
+      return {
+        ...state,
+        currentSharesValue: {
+          price: parseFloat(last(action.payload.data).price),
+          date: last(action.payload.data).date
+        }
       }
     case actionTypes.CHANGE_TRADE_ATTRIBUTE:
       return {

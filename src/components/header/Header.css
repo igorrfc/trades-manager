@@ -8,3 +8,28 @@
     font-size: 1.5rem;
     font-weight: 400;
     color: var(--gray); }
+
+.sharesbalance {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  border: 1px solid var(--iron);
+  padding: 30px 20px 20px 20px;
+  background-color: white;
+  color: var(--gray); }
+  .sharesbalance-label {
+    position: relative; }
+    .sharesbalance-label span {
+      position: absolute;
+      top: -1rem;
+      color: var(--science-blue);
+      font-size: 0.8rem;
+      font-weight: 600; }
+  .sharesbalance-amount {
+    font-weight: 600; }
+  .sharesbalance-multiplier {
+    fill: var(--science-blue); }
+  .sharesbalance-equal {
+    color: var(--science-blue);
+    font-weight: bold; }
+  .sharesbalance svg {
+    color: var(--gray); }

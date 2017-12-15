@@ -82,6 +82,19 @@ export const createTrades = list => ({
   }
 })
 
+export const getCurrentSharesValue = () => ({
+  types: [
+    actionTypes.REQUEST_SHARES_VALUE_START,
+    actionTypes.REQUEST_SHARES_VALUE_SUCCESS,
+    actionTypes.REQUEST_SHARES_VALUE_FAILURE
+  ],
+  payload: {
+    request: {
+      url: `funds/1/prices.json`
+    }
+  }
+})
+
 export const cancelTransaction = () => ({
   type: actionTypes.CANCEL_TRANSACTION
 })

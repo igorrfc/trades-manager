@@ -10,7 +10,7 @@ import { Remove } from '../icons'
 import TotalAmountInput from './TotalAmountInput'
 import TradeTypeIcon from './TradeTypeIcon'
 
-const BRAZILIAN_DATE_FORMAT = 'DD/MM/YYYY'
+import { date } from '../../constants'
 
 const KIND_LIST = [
   { label: 'Aplicação', value: 0 },
@@ -64,7 +64,7 @@ class TradeRow extends Component {
           <DatePicker
             name="date"
             selected={selectedDate}
-            dateFormat={BRAZILIAN_DATE_FORMAT}
+            dateFormat={date.BRAZILIAN_DATE_FORMAT}
             onChange={value =>
               changeAttribute('date', value.format('YYYY-MM-DD'))
             }

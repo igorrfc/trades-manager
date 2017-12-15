@@ -13,3 +13,41 @@
     color: var(--gray);
   }
 }
+
+.sharesbalance {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  border: 1px solid var(--iron);
+  padding: 30px 20px 20px 20px;
+  background-color: white;
+  color: var(--gray);
+
+  &-label {
+    position: relative;
+
+    span {
+      position: absolute;
+      top: -1rem;
+      color: var(--science-blue);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+  }
+
+  &-amount {
+    font-weight: 600;
+  }
+
+  &-multiplier {
+    fill: var(--science-blue);
+  }
+
+  &-equal {
+    color: var(--science-blue);
+    font-weight: bold;
+  }
+
+  svg {
+    color: var(--gray);
+  }
+}

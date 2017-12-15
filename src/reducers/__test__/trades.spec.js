@@ -137,4 +137,25 @@ describe('trades reducer', () => {
       expect(trades(initialState, action).draftList).toEqual(initialState.list)
     })
   })
+
+  describe('REQUEST_SHARES_VALUE_SUCCESS', () => {
+    it('updates the currentSharesValue to the last value received on payload', () => {
+      const action = {
+        type: actionTypes.REQUEST_SHARES_VALUE_SUCCESS,
+        payload: {
+          data: [
+            { price: '14309173.49272351', date: '2016-06-16' },
+            { price: '14309173.49272352', date: '2016-06-17' },
+            { price: '14309173.49272353', date: '2016-06-18' }
+          ]
+        }
+      }
+      const initialState = { currentSharesValue: {} }
+
+      expect(trades(initialState, action).currentSharesValue).toEqual({
+        price: 14309173.49272353,
+        date: '2016-06-18'
+      })
+    })
+  })
 })
